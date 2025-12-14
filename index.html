@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AddamCo - Future of Digital Innovation</title>
+    <title>AddamCo — Content Engine & AI Studio</title>
+    <meta name="description" content="AddamCo helps brands grow through organic, story-driven content and AI-powered production. Backend SEO supports content marketing and digital marketing strategies without relying on ads.">
+    <meta name="keywords" content="digital marketing, content marketing, content creation agency, brand awareness, organic growth, AI studio India, storytelling content, digital marketing Bangalore, digital marketing Bengaluru, content marketing Bangalore, content marketing Bengaluru, content creation agency Bangalore, content creation agency Bengaluru, brand development Bangalore, AI content studio Bangalore, organic marketing Bangalore, digital marketing agency in Bangalore, digital marketing agency in Bengaluru, digital marketing agency in Mumbai, digital marketing agency in Delhi, digital marketing agency in Kolkata, digital marketing agency in India, content marketing agency in Bangalore, content marketing agency in Bengaluru, content marketing agency in Mumbai, content marketing agency in Delhi, content marketing agency in Kolkata, content marketing agency in India, content creation agency in Bangalore, content creation agency in Bengaluru, content creation agency in Mumbai, content creation agency in Delhi, content creation agency in Kolkata, content creation agency in India">
+    <meta name="robots" content="index, follow">
+    <meta name="geo.region" content="IN-KA">
+    <meta name="geo.placename" content="Bangalore, Bengaluru">
+    <meta name="geo.position" content="12.9716;77.5946">
+    <meta name="ICBM" content="12.9716, 77.5946">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -38,7 +45,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <span class="logo-text">AddamCo</span>
+                <button type="button" class="logo-text" aria-label="Go to Home">AddamCo</button>
                 <div class="logo-glow"></div>
                 <div class="logo-particles"></div>
             </div>
@@ -49,9 +56,6 @@
                 <li><a href="#contact" class="nav-link" data-text="Contact">Contact</a></li>
             </ul>
             <div class="nav-actions">
-                <div class="theme-toggle" id="themeToggle">
-                    <i class="fas fa-moon"></i>
-                </div>
                 <div class="hamburger">
                     <span></span>
                     <span></span>
@@ -62,23 +66,36 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section id="home" class="hero center-hero">
         <div class="hero-background">
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-            <div class="gradient-orb orb-3"></div>
-            <div class="quantum-field" id="quantumField"></div>
+            <div class="complex-bg">
+                <div class="bg-grid"></div>
+                <div class="bg-rings">
+                    <div class="ring ring-1"></div>
+                    <div class="ring ring-2"></div>
+                    <div class="ring ring-3"></div>
+                </div>
+                <div class="bg-nodes">
+                    <span class="node"></span>
+                    <span class="node"></span>
+                    <span class="node"></span>
+                    <span class="node"></span>
+                    <span class="node"></span>
+                    <span class="node"></span>
+                    <span class="node"></span>
+                    <span class="node"></span>
+                </div>
+            </div>
         </div>
         <div class="hero-content">
             <div class="hero-text" data-parallax="0.5">
                 <div class="glitch-wrapper">
-                    <h1 class="hero-title glitch" data-text="Building Brands For The AI Era">
-                        <span class="title-main">Building Brands</span>
-                        <span class="title-accent">For The AI Era</span>
+                    <h1 class="hero-title glitch" data-text="Why Us">
+                        <span class="title-main">Why Us</span>
                     </h1>
                 </div>
                 <p class="hero-description matrix-text">
-                    From brand development to AI-powered content creation, we're pioneering the future of creative storytelling.
+                    Anyone can run ads. Few can create content that people actually want to watch. We focus on organic storytelling that makes your audience trust you, remember you, and share your brand with others.
                 </p>
                 
                 <div class="hero-buttons">
@@ -91,29 +108,7 @@
                     </a>
                 </div>
             </div>
-            <div class="hero-visual" data-parallax="-0.3">
-                <div class="hologram-container">
-                    <div class="hologram-base">
-                        <div class="floating-card card-1" data-tilt>
-                            <div class="card-icon">🎨</div>
-                            <span>Brand Development</span>
-                            <div class="card-particles"></div>
-                        </div>
-                        <div class="floating-card card-2" data-tilt>
-                            <div class="card-icon">📹</div>
-                            <span>Content Engine</span>
-                            <div class="card-particles"></div>
-                        </div>
-                        <div class="floating-card card-3" data-tilt>
-                            <div class="card-icon">🤖</div>
-                            <span>AI Studio</span>
-                            <div class="card-particles"></div>
-                        </div>
-                    </div>
-                    <div class="hologram-lines"></div>
-                    <div class="hologram-scan"></div>
-                </div>
-            </div>
+            <!-- Complex visuals rendered in background; primary focus on centered hero text -->
         </div>
         <div class="scroll-indicator">
             <div class="scroll-arrow"></div>
@@ -248,16 +243,13 @@
                         </div>
                     </div>
                     <h3>Brand Development</h3>
-                    <p>We craft comprehensive brand identities from A to Z. From strategy and positioning to visual identity and brand guidelines, we build brands that resonate and endure.</p>
+                    <p>Build a memorable brand—strategy, identity, and scalable systems.</p>
                     <ul class="service-features">
-                        <li>Brand Strategy & Positioning</li>
-                        <li>Visual Identity Design</li>
-                        <li>Brand Guidelines & Systems</li>
-                        <li>Market Research & Analysis</li>
-                        <li>Brand Storytelling</li>
-                        <li>Launch & Activation</li>
+                        <li>Brand Strategy</li>
+                        <li>Visual Identity</li>
+                        <li>Brand Systems</li>
                     </ul>
-                    <button class="service-btn">Learn More →</button>
+                    <a class="service-btn" href="brand.html">Learn More →</a>
                 </div>
                 <div class="service-card" data-service="content">
                     <div class="service-icon">
@@ -266,16 +258,13 @@
                         </div>
                     </div>
                     <h3>Content Engine</h3>
-                    <p>We build and manage multiple YouTube channels, create engaging content strategies, and help companies establish a powerful online presence through consistent, high-quality content.</p>
+                    <p>AI-driven content and growth across the channels that matter.</p>
                     <ul class="service-features">
-                        <li>YouTube Channel Management</li>
-                        <li>Content Strategy & Planning</li>
-                        <li>Video Production & Editing</li>
-                        <li>SEO & Growth Optimization</li>
+                        <li>YouTube Channels</li>
+                        <li>Content Strategy</li>
                         <li>Multi-Channel Distribution</li>
-                        <li>Analytics & Performance Tracking</li>
                     </ul>
-                    <button class="service-btn">Learn More →</button>
+                    <a class="service-btn" href="content.html">Learn More →</a>
                 </div>
                 <div class="service-card" data-service="ai">
                     <div class="service-icon">
@@ -284,16 +273,13 @@
                         </div>
                     </div>
                     <h3>AI Studio Production</h3>
-                    <p>Revolutionary AI-powered production house creating movies, web series, and videos. We eliminate the need for physical locations and actors while collaborating with directors, scriptwriters, and creative talent.</p>
+                    <p>AI-first virtual production for films, series, and digital video.</p>
                     <ul class="service-features">
-                        <li>AI-Generated Movies & Series</li>
-                        <li>Virtual Production Environments</li>
-                        <li>AI Character Development</li>
-                        <li>Scriptwriting & Storyboarding</li>
-                        <li>Prompt Engineering Excellence</li>
-                        <li>Post-Production & VFX</li>
+                        <li>Virtual Production</li>
+                        <li>AI Characters</li>
+                        <li>Digital Sets</li>
                     </ul>
-                    <button class="service-btn">Learn More →</button>
+                    <a class="service-btn" href="ai-studio.html">Learn More →</a>
                 </div>
             </div>
         </div>
@@ -368,12 +354,12 @@
                         </div>
                         <div class="contact-item">
                             <span class="contact-icon">📍</span>
-                            <span>Bengaluru, India</span>
+                            <span>9th Main Rd, Vyalikaval HBCS Layout, Nagavara, Bengaluru, Karnataka 560045</span>
                         </div>
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form id="contactForm">
+                    <form id="contactForm" data-endpoint="/api/contact">
                         <div class="form-group">
                             <input type="text" id="name" name="name" placeholder="Your Name *" required>
                         </div>
