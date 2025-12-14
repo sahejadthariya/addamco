@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initFloatingCards();
     initParticleEffect();
     initExploreButton();
-    initThemeToggle();
     initHeroCounters();
     
     // Initialize new interactive service showcase
@@ -104,23 +103,22 @@ function initNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
+    const logoTexts = document.querySelectorAll('.logo-text');
 
-    // Smooth scrolling for navigation links
+    // Smooth scrolling for hash navigation links; allow normal links
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            const isHash = href && href.startsWith('#');
+            if (!isHash) return; // let browser handle full-page navigation
+
             e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
+            const targetSection = document.querySelector(href);
             if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-                
+                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 // Close mobile menu if open
                 navMenu.classList.remove('active');
-                hamburger.classList.remove('active');
+                if (hamburger) hamburger.classList.remove('active');
             }
         });
     });
@@ -130,6 +128,39 @@ function initNavigation() {
         hamburger.addEventListener('click', function() {
             this.classList.toggle('active');
             navMenu.classList.toggle('active');
+        });
+    }
+
+    function navigateHome() {
+        const path = window.location.pathname || '';
+        const onIndex = path.endsWith('/') || path.endsWith('index.html') || path === '';
+        if (onIndex) {
+            const target = document.getElementById('home');
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                window.location.hash = '#home';
+            }
+        } else {
+            window.location.href = 'index.html#home';
+        }
+    }
+    if (logoTexts && logoTexts.length) {
+        logoTexts.forEach(el => {
+            if (el.tagName !== 'BUTTON' && el.tagName !== 'A') {
+                el.setAttribute('role', 'link');
+                el.setAttribute('tabindex', '0');
+                el.style.cursor = 'pointer';
+            }
+            el.addEventListener('click', function() {
+                navigateHome();
+            });
+            el.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    navigateHome();
+                }
+            });
         });
     }
 
@@ -196,12 +227,12 @@ function initServiceCards() {
     // Service buttons
     const serviceButtons = document.querySelectorAll('.service-btn');
     serviceButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function(e) {
             const card = this.closest('.service-card');
             const serviceType = card.getAttribute('data-service');
             
             // Create ripple effect
-            createRippleEffect(this, event);
+            createRippleEffect(this, e);
             
             // Scroll to contact form with service pre-selected
             setTimeout(() => {
@@ -260,23 +291,31 @@ function initContactForm() {
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
             
-            // Simulate API call
-            setTimeout(() => {
-                // Show success message
+            const endpoint = this.getAttribute('data-endpoint') || '/api/contact';
+            fetch(endpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(async (res) => {
+                const isJson = res.headers.get('content-type')?.includes('application/json');
+                const payload = isJson ? await res.json() : null;
+                if (!res.ok) {
+                    const msg = payload?.message || 'Failed to send message.';
+                    throw new Error(msg);
+                }
                 showNotification('Message sent successfully! We\'ll get back to you soon.', 'success');
-                
-                // Reset form
                 this.reset();
+                this.style.animation = 'successPulse 0.6s ease-out';
+                setTimeout(() => { this.style.animation = ''; }, 600);
+            })
+            .catch((err) => {
+                showNotification(err.message || 'Network error. Please try again.', 'error');
+            })
+            .finally(() => {
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
-                
-                // Add success animation to form
-                this.style.animation = 'successPulse 0.6s ease-out';
-                setTimeout(() => {
-                    this.style.animation = '';
-                }, 600);
-                
-            }, 2000);
+            });
         });
     }
 }
@@ -481,22 +520,7 @@ function initExploreButton() {
 }
 
 // Theme toggle
-function initThemeToggle() {
-    const toggle = document.getElementById('themeToggle');
-    const saved = localStorage.getItem('theme');
-    if (saved === 'light') {
-        document.body.classList.add('light-theme');
-        if (toggle) toggle.innerHTML = '<i class="fas fa-sun"></i>';
-    }
-    if (toggle) {
-        toggle.addEventListener('click', function() {
-            document.body.classList.toggle('light-theme');
-            const isLight = document.body.classList.contains('light-theme');
-            this.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-            localStorage.setItem('theme', isLight ? 'light' : 'dark');
-        });
-    }
-}
+function initThemeToggle() { /* removed */ }
 
 // Deterministic hero counters from data-target
 function initHeroCounters() {
